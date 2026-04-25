@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import CameraView from './components/CameraView.jsx';
 import ResultPanel from './components/ResultPanel.jsx';
 import WasteGuide from './components/WasteGuide.jsx';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const INITIAL_MODEL_STATUS = {
   state: 'loading',
@@ -30,38 +31,41 @@ function App() {
   }, [modelStatus]);
 
   return (
-    <main className="app-shell">
-      <section className="hero">
-        <div>
-          <p className="eyebrow">Browser-based YOLO demo</p>
-          <h1>AI Waste Classification</h1>
-          <p className="hero-copy">
-            Detect common waste categories locally from a laptop webcam or phone camera.
-          </p>
-        </div>
-        <div className={`status-pill ${topStatus.tone}`}>{topStatus.text}</div>
-      </section>
+    <>
+      <main className="app-shell">
+        <section className="hero">
+          <div>
+            <p className="eyebrow">Browser-based YOLO demo</p>
+            <h1>AI Waste Classification</h1>
+            <p className="hero-copy">
+              Detect common waste categories locally from a laptop webcam or phone camera.
+            </p>
+          </div>
+          <div className={`status-pill ${topStatus.tone}`}>{topStatus.text}</div>
+        </section>
 
-      <section className="main-grid">
-        <CameraView
-          confidenceThreshold={confidenceThreshold}
-          onCameraStatusChange={setCameraStatus}
-          onDetectionsChange={setDetections}
-          onModelStatusChange={setModelStatus}
-        />
-
-        <aside className="side-stack">
-          <ResultPanel
-            cameraStatus={cameraStatus}
+        <section className="main-grid">
+          <CameraView
             confidenceThreshold={confidenceThreshold}
-            detections={detections}
-            modelStatus={modelStatus}
-            onConfidenceThresholdChange={setConfidenceThreshold}
+            onCameraStatusChange={setCameraStatus}
+            onDetectionsChange={setDetections}
+            onModelStatusChange={setModelStatus}
           />
-          <WasteGuide />
-        </aside>
-      </section>
-    </main>
+
+          <aside className="side-stack">
+            <ResultPanel
+              cameraStatus={cameraStatus}
+              confidenceThreshold={confidenceThreshold}
+              detections={detections}
+              modelStatus={modelStatus}
+              onConfidenceThresholdChange={setConfidenceThreshold}
+            />
+            <WasteGuide />
+          </aside>
+        </section>
+      </main>
+      <SpeedInsights />
+    </>
   );
 }
 

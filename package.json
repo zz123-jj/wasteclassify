@@ -14,6 +14,7 @@
     "vite": "^8.0.10"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "onnxruntime-web": "^1.24.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"

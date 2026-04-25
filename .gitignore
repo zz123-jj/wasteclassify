@@ -1,0 +1,8 @@
+node_modules/
+dist/
+vendor/
+.venv-model-export/
+.DS_Store
+*.local
+.env
+.env.*

@@ -1,0 +1,21 @@
+{
+  "name": "waste-classifier-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "model:setup": "bash scripts/setup-open-source-model.sh"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.10"
+  },
+  "dependencies": {
+    "onnxruntime-web": "^1.24.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}
